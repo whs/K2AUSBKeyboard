@@ -1,4 +1,4 @@
-package th.in.whs.k2ausb.hid;
+package th.in.whs.k2ausbkbd.hid;
 
 /**
  * Created by whs on 1/25/2015 AD.

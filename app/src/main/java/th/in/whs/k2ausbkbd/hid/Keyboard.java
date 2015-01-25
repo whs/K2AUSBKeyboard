@@ -1,6 +1,4 @@
-package th.in.whs.k2ausb.hid;
-
-import android.util.Log;
+package th.in.whs.k2ausbkbd.hid;
 
 import java.io.File;
 import java.io.IOException;

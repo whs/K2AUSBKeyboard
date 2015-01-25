@@ -9,9 +9,4 @@
         android:title="@string/hide_launcher"
         android:summary="@string/hide_launcher_restore"/>
 
-    <Preference android:title="@string/donate" >
-        <intent android:action="android.intent.action.VIEW"
-            android:data="@string/donate_url" />
-    </Preference>
-
 </PreferenceScreen>

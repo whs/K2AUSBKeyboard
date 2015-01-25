@@ -1,8 +1,7 @@
-package th.in.whs.k2ausb;
+package th.in.whs.k2ausbkbd;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -11,8 +10,8 @@ import keepass2android.pluginsdk.KeepassDefs;
 import keepass2android.pluginsdk.PluginAccessException;
 import keepass2android.pluginsdk.PluginActionBroadcastReceiver;
 import keepass2android.pluginsdk.Strings;
-import th.in.whs.k2ausb.hid.Keyboard;
-import th.in.whs.k2ausb.hid.Keycode;
+import th.in.whs.k2ausbkbd.hid.Keyboard;
+import th.in.whs.k2ausbkbd.hid.Keycode;
 
 public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
     @Override
