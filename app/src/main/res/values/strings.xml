@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">K2A USB Keyboard</string>
+    <string name="type">Type to USB</string>
+
+    <string name="kp2aplugin_title">USB Keyboard</string>
+    <string name="kp2aplugin_shortdesc">Send password to computer connected via USB</string>
+    <string name="kp2aplugin_author">Manatsawin Hanmongkolchai</string>
+
+    <string name="enable_plugin">Enable Keepass2Android plugin</string>
+    <string name="type_user_pass">Type username/password to USB</string>
+    <string name="type_user_pass_enter">Type username/password/enter to USB</string>
+    <string name="hide_launcher">Hide from launcher</string>
+    <string name="hide_launcher_restore">To restore, reinstall this app</string>
+    <string name="donate">Donate</string>
+    <string name="donate_url">https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=manatsawin%40gmail%2ecom&amp;lc=GB&amp;item_name=K2A%20USB%20Keyboard&amp;no_note=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHostedGuest</string>
+    <string name="error_send">Error while sending USB key. Are you rooted and using supported kernel?</string>
+    <string name="no_keycode">Text contains an unsupported character. Please file a bug.</string>
+</resources>
