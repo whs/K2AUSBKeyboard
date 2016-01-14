@@ -11,17 +11,33 @@ import keepass2android.pluginsdk.PluginAccessException;
 import keepass2android.pluginsdk.PluginActionBroadcastReceiver;
 import keepass2android.pluginsdk.Strings;
 import th.in.whs.k2ausbkbd.hid.Keyboard;
-import th.in.whs.k2ausbkbd.hid.Keycode;
 
 public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
     @Override
     protected void openEntry(OpenEntryAction oe) {
         Context ctx = oe.getContext();
-        String type = ctx.getString(R.string.type);
+
         try {
             for (String field: oe.getEntryFields().keySet()) {
-                oe.addEntryFieldAction("th.in.whs.k2ausb.type", Strings.PREFIX_STRING + field, type, R.drawable.ic_launcher, Bundle.EMPTY);
+                Bundle qwertz_layout = new Bundle();
+                Bundle qwerty_layout = new Bundle();
+                qwertz_layout.putString("layout", "qwertz");
+                qwerty_layout.putString("layout", "qwerty");
+
+
+                oe.addEntryFieldAction("th.in.whs.k2ausb.type.qwertz",
+                        Strings.PREFIX_STRING + field,
+                        ctx.getString(R.string.type_qwertz),
+                        R.drawable.ic_launcher,
+                        qwertz_layout);
+
+                oe.addEntryFieldAction("th.in.whs.k2ausb.type.qwerty",
+                        Strings.PREFIX_STRING + field,
+                        ctx.getString(R.string.type_qwerty),
+                        R.drawable.ic_launcher,
+                        qwerty_layout);
             }
+
 
             Bundle type_user_pass = new Bundle();
             type_user_pass.putBoolean("username", true);
@@ -42,6 +58,8 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
     @Override
     protected void actionSelected(ActionSelectedAction actionSelected) {
         StringBuilder type = new StringBuilder();
+        String layout = "qwerty";
+
         if(actionSelected.isEntryAction()) {
             Bundle data = actionSelected.getActionData();
             if(data.containsKey("username")){
@@ -57,17 +75,17 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
                 type.append("\n");
             }
         }else{
+            Bundle data = actionSelected.getActionData();
+            layout = data.getString("layout");
+
             String fieldKey = actionSelected.getFieldId().substring(Strings.PREFIX_STRING.length());
             type.append(actionSelected.getEntryFields().get(fieldKey));
         }
 
         if(type.length() > 0){
             try {
-                Keyboard kbd = new Keyboard();
-                kbd.type(type.toString());
-            } catch (Keycode.KeycodeNotFoundException e){
-                Toast.makeText(actionSelected.getContext(), R.string.no_keycode, Toast.LENGTH_LONG).show();
-            } catch (UnsupportedOperationException | IOException e) {
+                Keyboard.getInstance().type( type.toString(), layout );
+            } catch (IOException e) {
                 Toast.makeText(actionSelected.getContext(), R.string.error_send, Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }

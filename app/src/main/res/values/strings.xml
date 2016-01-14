@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">K2A USB Keyboard</string>
-    <string name="type">Type to USB</string>
+    <string name="type_qwertz">Type to USB (qwertz)</string>
+    <string name="type_qwerty">Type to USB (qwerty)</string>
 
     <string name="kp2aplugin_title">USB Keyboard</string>
     <string name="kp2aplugin_shortdesc">Send password to computer connected via USB</string>
