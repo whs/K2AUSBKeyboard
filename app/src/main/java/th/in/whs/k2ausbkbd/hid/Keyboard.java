@@ -3,20 +3,25 @@ package th.in.whs.k2ausbkbd.hid;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import com.convert.KeyCode;
+import com.convert.QwertyCodes;
+import com.convert.QwertzCodes;
 
 public class Keyboard {
+    private static Keyboard instance = null;
+
     public static final String DEVICE = "/dev/hidg0";
 
     private Process process;
 
-    public Keyboard() throws UnsupportedOperationException {
+    protected Keyboard() throws UnsupportedOperationException {
         if(!new File(DEVICE).exists()){
             throw new UnsupportedOperationException("Unsupported kernel");
         }
 
         try {
             process = Runtime.getRuntime().exec(new String[]{
-                    "/system/bin/su",
+                    "su",
                     "-c",
                     "sh"
             });
@@ -29,21 +34,45 @@ public class Keyboard {
         process.destroy();
     }
 
-    public void type(String text) throws IOException {
+
+    public void type(String text, String layout) throws IOException {
         for(int i = 0, j = text.length(); i < j; i++){
-            char ch = text.charAt(i);
-            Keycode.NeedShiftInfo shift = Keycode.needShift(ch);
+            char typeChar = text.charAt(i);
 
-            byte[] buffer = new byte[]{
-                    shift.shift ? Keycode.SHIFT : 0,
-                    0,
-                    Keycode.getScancode(shift.keyCode),
-                    0, 0, 0, 0, 0
-            };
+            sendChar(typeChar, layout);
 
-            writeToDevice(buffer);
-            keyUp();
+            // Fix for double tap.
+            if( typeChar == '^' ) {
+                sendChar( typeChar, layout );
+                sendChar( '\b', layout );
+            }
+            else if( typeChar == '´' || typeChar == '`' ) {
+                sendChar( typeChar, layout );
+            }
         }
+    }
+
+    private void sendChar(char data, String layout) throws IOException {
+        KeyCode key = null;
+
+        switch( layout ) {
+            case "qwertz":
+                key = QwertzCodes.getInstance().getKeycode( data );
+                break;
+            default:
+                key = QwertyCodes.getInstance().getKeycode( data );
+                break;
+        }
+
+        byte[] buffer = new byte[]{
+                (key != null) ? (byte)key.modifier : 0,
+                0,
+                (key != null) ? (byte)key.code : 0,
+                0 , 0, 0, 0, 0
+        };
+
+        writeToDevice(buffer);
+        keyUp();
     }
 
     private void writeToDevice(byte[] bytes) throws IOException {
@@ -65,5 +94,13 @@ public class Keyboard {
             builder.append(Integer.toHexString(new Byte(bytes[i]).intValue()));
         }
         return builder.toString();
+    }
+
+    // Singleton
+    public static Keyboard getInstance() {
+        if(instance == null) {
+            instance = new Keyboard();
+        }
+        return instance;
     }
 }
