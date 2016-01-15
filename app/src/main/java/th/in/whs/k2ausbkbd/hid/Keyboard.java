@@ -41,10 +41,13 @@ public class Keyboard {
 
             sendChar(typeChar, layout);
 
-            // Fix for double circumflex. Send another circumflex, then delete it.
+            // Fix for double tap.
             if( typeChar == '^' ) {
-                sendChar( '^', layout );
+                sendChar( typeChar, layout );
                 sendChar( '\b', layout );
+            }
+            else if( typeChar == '´' || typeChar == '`' ) {
+                sendChar( typeChar, layout );
             }
         }
     }
