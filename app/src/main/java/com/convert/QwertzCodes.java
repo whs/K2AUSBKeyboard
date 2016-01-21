@@ -2,6 +2,7 @@ package com.convert;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by freehunt on 13.01.2016.
@@ -10,11 +11,11 @@ import java.util.Map;
 public class QwertzCodes {
     private static QwertzCodes instance = null;
 
-    private HashMap<Character, KeyCode> keyTable;
+    private TreeMap<Character, KeyCode> keyTable;
 
     protected QwertzCodes() {
         // First we initialize our keyMap, which contains the keys normal, shift, altgr buttons
-        HashMap<Character, char[]> keyMap = new HashMap<Character, char[]>();
+        TreeMap<Character, char[]> keyMap = new TreeMap<Character, char[]>();
         keyMap.put((char)0x00, new char[]{'\0', '\0', '\0'}); 	// Reserved (no event indicated)
         keyMap.put((char)0x01, new char[]{'\0', '\0', '\0'}); 	// Keyboard ErrorRollOver
         keyMap.put((char)0x02, new char[]{'\0', '\0', '\0'}); 	// Keyboard POSTFail
@@ -127,7 +128,7 @@ public class QwertzCodes {
         keyMap.put((char)0xE7, new char[]{'\0', '\0', '\0'}); 	// Keyboard Right GUI
 
         // Now we create a ascii table for the buttons to easy get the keycode
-        keyTable = new HashMap<Character, KeyCode>();
+        keyTable = new TreeMap<Character, KeyCode>();
 
         for( Map.Entry<Character, char[]> entry : keyMap.entrySet() ) {
             char[] keys = entry.getValue();
