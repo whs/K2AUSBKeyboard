@@ -42,12 +42,8 @@ public class Keyboard {
             sendChar(typeChar, layout);
 
             // Fix for double tap.
-            if( typeChar == '^' ) {
-                sendChar( typeChar, layout );
-                sendChar( '\b', layout );
-            }
-            else if( typeChar == '´' || typeChar == '`' ) {
-                sendChar( typeChar, layout );
+            if( typeChar == '^' || typeChar == '´' || typeChar == '`' ) {
+                sendChar( ' ', layout );
             }
         }
     }
