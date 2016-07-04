@@ -54,7 +54,7 @@ public class Keyboard {
 
         switch( layout ) {
             case "azerty":
-                key = AzertyCodes.getInstance().getKeycode( date );
+                key = AzertyCodes.getInstance().getKeycode( data );
                 break;
             case "qwertz":
                 key = QwertzCodes.getInstance().getKeycode( data );
