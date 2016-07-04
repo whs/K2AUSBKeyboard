@@ -19,11 +19,18 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
 
         try {
             for (String field: oe.getEntryFields().keySet()) {
+                Bundle azerty_layout = new Bundle();
                 Bundle qwertz_layout = new Bundle();
                 Bundle qwerty_layout = new Bundle();
+                azerty_layout.putString("layout", "azerty");
                 qwertz_layout.putString("layout", "qwertz");
                 qwerty_layout.putString("layout", "qwerty");
 
+                oe.addEntryFieldAction("th.in.whs.k2ausb.type.azerty",
+                        Strings.PREFIX_STRING + field,
+                        ctx.getString(R.string.type_azerty),
+                        R.drawable.ic_launcher,
+                        azerty_layout);
 
                 oe.addEntryFieldAction("th.in.whs.k2ausb.type.qwertz",
                         Strings.PREFIX_STRING + field,

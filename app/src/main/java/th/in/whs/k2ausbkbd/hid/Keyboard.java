@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import com.convert.KeyCode;
 import com.convert.QwertyCodes;
 import com.convert.QwertzCodes;
+import com.convert.AzertyCodes;
 
 public class Keyboard {
     private static Keyboard instance = null;
@@ -52,6 +53,9 @@ public class Keyboard {
         KeyCode key = null;
 
         switch( layout ) {
+            case "azerty":
+                key = AzertyCodes.getInstance().getKeycode( date );
+                break;
             case "qwertz":
                 key = QwertzCodes.getInstance().getKeycode( data );
                 break;
