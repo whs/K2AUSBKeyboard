@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">K2A USB Keyboard</string>
+    <string name="type_azerty">Type to USB (azerty)</string>
     <string name="type_qwertz">Type to USB (qwertz)</string>
     <string name="type_qwerty">Type to USB (qwerty)</string>
 
