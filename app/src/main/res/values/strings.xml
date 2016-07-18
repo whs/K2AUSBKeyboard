@@ -15,4 +15,5 @@
     <string name="hide_launcher_restore">To restore, reinstall this app</string>
     <string name="error_send">Error while sending USB key. Are you rooted and using supported kernel?</string>
     <string name="no_keycode">Text contains an unsupported character. Please file a bug.</string>
+    <string name="error_kernel">Your device\'s kernel is not supported. Please flash a kernel with HID support.</string>
 </resources>

@@ -95,6 +95,8 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
             } catch (IOException e) {
                 Toast.makeText(actionSelected.getContext(), R.string.error_send, Toast.LENGTH_LONG).show();
                 e.printStackTrace();
+            } catch (UnsupportedOperationException e) {
+                Toast.makeText(actionSelected.getContext(), R.string.error_kernel, Toast.LENGTH_LONG).show();
             }
         }
     }
