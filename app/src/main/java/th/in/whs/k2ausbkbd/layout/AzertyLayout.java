@@ -1,4 +1,4 @@
-package com.convert;
+package th.in.whs.k2ausbkbd.layout;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,12 +8,10 @@ import java.util.TreeMap;
  * Created by freehunt on 13.01.2016.
  */
 
-public class AzertyCodes {
-    private static AzertyCodes instance = null;
-
+public class AzertyLayout implements Layout {
     private HashMap<Character, KeyCode> keyTable;
 
-    protected AzertyCodes() {
+    protected AzertyLayout() {
         // First we initialize our keyMap, which contains the keys normal, shift, altgr buttons
         TreeMap<Character, char[]> keyMap = new TreeMap<Character, char[]>();
         keyMap.put((char)0x00, new char[]{'\0', '\0', '\0'}); 	// Reserved (no event indicated)
@@ -152,13 +150,5 @@ public class AzertyCodes {
 
     public KeyCode getKeycode(char key) {
         return keyTable.get(key);
-    }
-
-    // Singleton
-    public  static AzertyCodes getInstance() {
-        if(instance == null) {
-            instance = new AzertyCodes();
-        }
-        return instance;
     }
 }

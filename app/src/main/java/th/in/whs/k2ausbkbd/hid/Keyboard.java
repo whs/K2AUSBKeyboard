@@ -3,10 +3,8 @@ package th.in.whs.k2ausbkbd.hid;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import com.convert.KeyCode;
-import com.convert.QwertyCodes;
-import com.convert.QwertzCodes;
-import com.convert.AzertyCodes;
+
+import th.in.whs.k2ausbkbd.layout.*;
 
 public class Keyboard {
     private static Keyboard instance = null;
@@ -36,7 +34,7 @@ public class Keyboard {
     }
 
 
-    public void type(String text, String layout) throws IOException {
+    public void type(String text, Layout layout) throws IOException {
         for(int i = 0, j = text.length(); i < j; i++){
             char typeChar = text.charAt(i);
 
@@ -49,20 +47,8 @@ public class Keyboard {
         }
     }
 
-    private void sendChar(char data, String layout) throws IOException {
-        KeyCode key = null;
-
-        switch( layout ) {
-            case "azerty":
-                key = AzertyCodes.getInstance().getKeycode( data );
-                break;
-            case "qwertz":
-                key = QwertzCodes.getInstance().getKeycode( data );
-                break;
-            default:
-                key = QwertyCodes.getInstance().getKeycode( data );
-                break;
-        }
+    private void sendChar(char data, Layout layout) throws IOException {
+        KeyCode key = layout.getKeycode(data);
 
         byte[] buffer = new byte[]{
                 (key != null) ? (byte)key.modifier : 0,

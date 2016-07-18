@@ -1,4 +1,4 @@
-package com.convert;
+package th.in.whs.k2ausbkbd.layout;
 
 /**
  * Created by freehunt on 13.01.2016.

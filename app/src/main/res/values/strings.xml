@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">K2A USB Keyboard</string>
-    <string name="type_azerty">Type to USB (azerty)</string>
-    <string name="type_qwertz">Type to USB (qwertz)</string>
-    <string name="type_qwerty">Type to USB (qwerty)</string>
+    <string name="type">Type to USB</string>
 
     <string name="kp2aplugin_title">USB Keyboard</string>
     <string name="kp2aplugin_shortdesc">Send password to computer connected via USB</string>
@@ -16,4 +14,6 @@
     <string name="error_send">Error while sending USB key. Are you rooted and using supported kernel?</string>
     <string name="no_keycode">Text contains an unsupported character. Please file a bug.</string>
     <string name="error_kernel">Your device\'s kernel is not supported. Please flash a kernel with HID support.</string>
+
+    <string name="layout">Keyboard layout</string>
 </resources>

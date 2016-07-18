@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="layout_list">
+        <item>QWERTY</item>
+        <item>AZERTY</item>
+        <item>QWERTZ</item>
+    </array>
+</resources>

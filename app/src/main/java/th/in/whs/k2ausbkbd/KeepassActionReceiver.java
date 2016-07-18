@@ -1,16 +1,12 @@
 package th.in.whs.k2ausbkbd;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-
-import java.io.IOException;
-
 import keepass2android.pluginsdk.KeepassDefs;
 import keepass2android.pluginsdk.PluginAccessException;
 import keepass2android.pluginsdk.PluginActionBroadcastReceiver;
 import keepass2android.pluginsdk.Strings;
-import th.in.whs.k2ausbkbd.hid.Keyboard;
 
 public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
     @Override
@@ -19,30 +15,11 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
 
         try {
             for (String field: oe.getEntryFields().keySet()) {
-                Bundle azerty_layout = new Bundle();
-                Bundle qwertz_layout = new Bundle();
-                Bundle qwerty_layout = new Bundle();
-                azerty_layout.putString("layout", "azerty");
-                qwertz_layout.putString("layout", "qwertz");
-                qwerty_layout.putString("layout", "qwerty");
-
-                oe.addEntryFieldAction("th.in.whs.k2ausb.type.azerty",
+                oe.addEntryFieldAction("th.in.whs.k2ausb.type",
                         Strings.PREFIX_STRING + field,
-                        ctx.getString(R.string.type_azerty),
+                        ctx.getString(R.string.type),
                         R.drawable.ic_launcher,
-                        azerty_layout);
-
-                oe.addEntryFieldAction("th.in.whs.k2ausb.type.qwertz",
-                        Strings.PREFIX_STRING + field,
-                        ctx.getString(R.string.type_qwertz),
-                        R.drawable.ic_launcher,
-                        qwertz_layout);
-
-                oe.addEntryFieldAction("th.in.whs.k2ausb.type.qwerty",
-                        Strings.PREFIX_STRING + field,
-                        ctx.getString(R.string.type_qwerty),
-                        R.drawable.ic_launcher,
-                        qwerty_layout);
+                        new Bundle());
             }
 
 
@@ -65,7 +42,7 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
     @Override
     protected void actionSelected(ActionSelectedAction actionSelected) {
         StringBuilder type = new StringBuilder();
-        String layout = "qwerty";
+        Context ctx = actionSelected.getContext();
 
         if(actionSelected.isEntryAction()) {
             Bundle data = actionSelected.getActionData();
@@ -82,22 +59,14 @@ public class KeepassActionReceiver extends PluginActionBroadcastReceiver {
                 type.append("\n");
             }
         }else{
-            Bundle data = actionSelected.getActionData();
-            layout = data.getString("layout");
-
             String fieldKey = actionSelected.getFieldId().substring(Strings.PREFIX_STRING.length());
             type.append(actionSelected.getEntryFields().get(fieldKey));
         }
 
-        if(type.length() > 0){
-            try {
-                Keyboard.getInstance().type( type.toString(), layout );
-            } catch (IOException e) {
-                Toast.makeText(actionSelected.getContext(), R.string.error_send, Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            } catch (UnsupportedOperationException e) {
-                Toast.makeText(actionSelected.getContext(), R.string.error_kernel, Toast.LENGTH_LONG).show();
-            }
-        }
+        Intent intent = new Intent(ctx, LayoutPromptActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("type", type.toString());
+        ctx.startActivity(intent);
     }
+
 }
