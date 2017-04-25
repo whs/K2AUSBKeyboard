@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">K2A USB Keyboard</string>
+    <string name="type">Eingabe via USB</string>
+
+    <string name="kp2aplugin_title">USB Keyboard</string>
+    <string name="kp2aplugin_shortdesc">Passwort zu Computer via USB senden</string>
+    <string name="kp2aplugin_author">Manatsawin Hanmongkolchai</string>
+
+    <string name="enable_plugin">Keepass2Android-Plugin aktivieren</string>
+    <string name="type_user_pass">Benutzername/Passwort über USB eingeben</string>
+    <string name="type_user_pass_enter">Benutzername/Passwort/Enter über USB eingeben</string>
+    <string name="hide_launcher">Im Launcher verstecken</string>
+    <string name="hide_launcher_restore">Zum Wiederherstellen App neuinstallieren</string>
+    <string name="error_send">Fehler während des Sendens via USB. Bist du gerootet und nutzt einen unterstützten Kernel?</string>
+    <string name="no_keycode">Text enthält ein nicht unterstütztes Zeichen. Bitte sende einen Fehlerbericht.</string>
+    <string name="error_kernel">Der Kernel deines Gerätes wird nicht unterstützt. Bitte flashe einen Kernel mit HID-Support.</string>
+
+    <string name="layout">Keyboard-Layout</string>
+</resources>
