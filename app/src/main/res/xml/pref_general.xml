@@ -7,12 +7,12 @@
     <CheckBoxPreference
         android:key="hide_from_launcher"
         android:title="@string/hide_launcher"
-        android:summary="@string/hide_launcher_restore"/>
+        android:summary="@string/hide_launcher_restore" />
     <ListPreference
         android:defaultValue="QWERTY"
         android:entries="@array/layout_list"
         android:entryValues="@array/layout_list"
         android:key="default_keyboard"
-        android:title="Default Keyboard Layout" />
+        android:title="@string/default_layout" />
 
 </PreferenceScreen>

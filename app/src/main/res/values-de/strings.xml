@@ -16,4 +16,5 @@
     <string name="error_kernel">Der Kernel deines Gerätes wird nicht unterstützt. Bitte flashe einen Kernel mit HID-Support.</string>
 
     <string name="layout">Keyboard-Layout</string>
+    <string name="default_layout">Standard Keyboard-Layout</string>
 </resources>

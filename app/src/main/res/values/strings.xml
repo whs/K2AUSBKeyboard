@@ -16,4 +16,5 @@
     <string name="error_kernel">Your device\'s kernel is not supported. Please flash a kernel with HID support.</string>
 
     <string name="layout">Keyboard layout</string>
+    <string name="default_layout">Default keyboard layout</string>
 </resources>
