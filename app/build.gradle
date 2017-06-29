@@ -8,8 +8,8 @@ android {
         applicationId "th.in.whs.k2ausbkbd"
         minSdkVersion 8
         targetSdkVersion 23
-        versionCode 8
-        versionName "1.3"
+        versionCode 9
+        versionName "1.3.1"
     }
     buildTypes {
         release {
