@@ -9,7 +9,7 @@
         android:title="@string/hide_launcher"
         android:summary="@string/hide_launcher_restore" />
     <ListPreference
-        android:defaultValue="US QWERTY"
+        android:defaultValue="QWERTY"
         android:entries="@array/layout_list"
         android:entryValues="@array/layout_list"
         android:key="default_keyboard"

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="layout_list">
-        <item>US QWERTY</item>
-	<item>UK QWERTY</item>
+        <item>QWERTY</item>
+		<item>UK QWERTY</item>
         <item>AZERTY</item>
         <item>QWERTZ</item>
     </array>
