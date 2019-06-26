@@ -8,8 +8,8 @@ public class KeyboardLayoutFactory {
     private Map<String, Class<? extends Layout>> registry = new HashMap<>();
 
     private KeyboardLayoutFactory(){
-        register("US QWERTY", USQwertyLayout.class);
-	register("UK QWERTY", UKQwertyLayout.class);
+        register("QWERTY", QwertyLayout.class);
+		register("UK QWERTY", UKQwertyLayout.class);
         register("QWERTZ", QwertzLayout.class);
         register("AZERTY", AzertyLayout.class);
     }
