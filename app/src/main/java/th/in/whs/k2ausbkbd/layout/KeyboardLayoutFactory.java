@@ -9,6 +9,7 @@ public class KeyboardLayoutFactory {
 
     private KeyboardLayoutFactory(){
         register("QWERTY", QwertyLayout.class);
+        register("UK QWERTY", UKQwertyLayout.class);
         register("QWERTZ", QwertzLayout.class);
         register("AZERTY", AzertyLayout.class);
     }
