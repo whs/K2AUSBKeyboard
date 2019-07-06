@@ -39,11 +39,6 @@ public class Keyboard {
             char typeChar = text.charAt(i);
 
             sendChar(typeChar, layout);
-
-            // Fix for double tap.
-            if( typeChar == '^' || typeChar == '´' || typeChar == '`' ) {
-                sendChar( ' ', layout );
-            }
         }
     }
 

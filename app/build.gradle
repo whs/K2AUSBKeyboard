@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "th.in.whs.k2ausbkbd"
         minSdkVersion 8
-        targetSdkVersion 23
-        versionCode 9
-        versionName "1.3.2"
+        targetSdkVersion 28
+        versionCode 10
+        versionName "1.4.0"
     }
     buildTypes {
         release {
@@ -23,6 +22,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':keepass2AndroidPluginSDK')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':keepass2AndroidPluginSDK')
 }
