@@ -11,6 +11,7 @@ public class KeyboardLayoutFactory {
         register("QWERTY", QwertyLayout.class);
         register("UK QWERTY", UKQwertyLayout.class);
         register("QWERTZ", QwertzLayout.class);
+        register("CH QWERTZ", CHQwertzLayout.class);
         register("AZERTY", AzertyLayout.class);
     }
 
